@@ -1,0 +1,30 @@
+{
+    "task": "User Sign-In",
+    "steps": [
+        {
+            "action": "navigate",
+            "url": "https://www.fake-bookstore.com/signin",
+            "description": "Navigate to the sign-in page to access the user account."
+        },
+        {
+            "action": "enter_text",
+            "selector": "#email",
+            "selector_type": "ID",
+            "text": "user@example.com",
+            "description": "Enter the user's email address into the email field."
+        },
+        {
+            "action": "enter_text",
+            "selector": "#password",
+            "selector_type": "ID",
+            "text": "securepassword",
+            "description": "Enter the user's password into the password field."
+        },
+        {
+            "action": "click",
+            "selector": "#sign-in-button",
+            "selector_type": "ID",
+            "description": "Click the sign-in button to log into the account."
+        }
+    ]
+}

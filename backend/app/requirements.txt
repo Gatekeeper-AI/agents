@@ -1,0 +1,12 @@
+fastapi
+selenium
+pymongo[srv]==3.12
+python-dotenv==1.0.0
+uvicorn
+httpx
+openai
+loguru
+langchain_google_genai
+langchain_anthropic
+langchain_openai
+posthog

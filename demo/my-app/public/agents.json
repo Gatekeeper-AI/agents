@@ -1,0 +1,52 @@
+{
+    "apiVersion": "1.0",
+    "baseUrl": "https://www.fake-bookstore.com",
+    "pages": {
+      "/search": {
+        "uiInteractions": {
+          "searchInput": {
+            "selector": "#search-box",
+            "description": "Input box for search queries",
+            "agent_instructions": "Enter the author's name or book title here to search for books."
+          },
+          "searchButton": {
+            "selector": "#search-button",
+            "description": "Button to submit the search query",
+            "agent_instructions": "Click this button to search for the books by the entered query."
+          }
+        }
+      },
+      "/results": {
+        "uiInteractions": {
+          "selectBook": {
+            "selector": ".book-item:first-child",
+            "description": "Selects the first book in the search results",
+            "agent_instructions": "Select the first book from the list that matches the search criteria."
+          }
+        }
+      },
+      "/book-detail": {
+        "uiInteractions": {
+          "addToCart": {
+            "selector": "#add-to-cart",
+            "description": "Adds the selected book to the shopping cart",
+            "agent_instructions": "Use this button to add the book to the shopping cart."
+          }
+        }
+      },
+      "/cart": {
+        "uiInteractions": {
+          "checkout": {
+            "selector": "#checkout-button",
+            "description": "Proceeds to checkout",
+            "agent_instructions": "Proceed to checkout after reviewing the cart."
+          }
+        }
+      }
+    },
+    "solana": {
+      "address": "5T3CGwCJrvfVGtsfxDVDuRoLT2d5Vcq2XVSxQtziNmp7",
+      "rate": "0.20"
+    }
+  }
+  

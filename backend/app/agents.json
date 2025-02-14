@@ -1,0 +1,33 @@
+{
+  "agentsJson": "1.0.0",
+  "baseUrl": "https://x.com/?mx=2",
+  "flows": [
+    {
+      "id": "flow_1",
+      "title": "X. It\u2019s what\u2019s happening / X",
+      "url": "https://x.com/?mx=2",
+      "interactive_elements": [],
+      "actions": [],
+      "transitions": [],
+      "important_elements": []
+    },
+    {
+      "id": "flow_2",
+      "title": "X. It\u2019s what\u2019s happening / X",
+      "url": "https://x.com/?mx=2",
+      "interactive_elements": [],
+      "actions": [],
+      "transitions": [],
+      "important_elements": []
+    },
+    {
+      "id": "flow_3",
+      "title": "X. It\u2019s what\u2019s happening / X",
+      "url": "https://x.com/?mx=2",
+      "interactive_elements": [],
+      "actions": [],
+      "transitions": [],
+      "important_elements": []
+    }
+  ]
+}

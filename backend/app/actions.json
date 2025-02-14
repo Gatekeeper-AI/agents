@@ -1,0 +1,38 @@
+{
+  "task": "Explore the site",
+  "steps": [
+    {
+      "action": "navigate",
+      "url": "https://rileyc.xyz/",
+      "description": "Navigate to the homepage of the website to start exploring."
+    },
+    {
+      "action": "click",
+      "selector": "a[href='/about']",
+      "selector_type": "css_selector",
+      "description": "Click on the 'About Me' link to begin exploring the site, starting with personal information."
+    },
+    {
+      "action": "navigate",
+      "url": "https://rileyc.xyz/",
+      "description": "Return to the homepage after exploring the 'About Me' section."
+    },
+    {
+      "action": "click",
+      "selector": "a[href='/projects']",
+      "selector_type": "css_selector",
+      "description": "Click on the 'Projects' link to explore the projects section of the website."
+    },
+    {
+      "action": "navigate",
+      "url": "https://rileyc.xyz/",
+      "description": "Return to the homepage after exploring the 'Projects' section."
+    },
+    {
+      "action": "click",
+      "selector": "a[href='/contact']",
+      "selector_type": "css_selector",
+      "description": "Click on the 'Contact' link to explore the contact information section of the website."
+    }
+  ]
+}

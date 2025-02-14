@@ -1,0 +1,61 @@
+{
+  "agentsJson": "1.0.0",
+  "baseUrl": "https://www.asciiart.eu/",
+  "flows": [
+    {
+      "id": "flow_1",
+      "title": "ASCII Art Archive Category Extraction",
+      "url": "https://www.asciiart.eu/",
+      "interactive_elements": [
+        {
+          "name": "Category List Items",
+          "tag": "LI",
+          "selector": "ul.categories-list > li",
+          "selector_type": "css_selector",
+          "description": "Each list item represents a category with the number of ASCII arts. Essential for extracting the desired information.",
+          "recommended_action": "extract_content"
+        },
+        {
+          "name": "Category Links",
+          "tag": "A",
+          "selector": "ul.categories-list > li > a",
+          "selector_type": "css_selector",
+          "description": "Links for navigating to specific categories.  Important for extracting the category name.",
+          "recommended_action": "extract_content"
+        },
+        {
+          "name": "Category Item Count",
+          "tag": "SPAN",
+          "selector": "ul.categories-list > li > a > span",
+          "selector_type": "css_selector",
+          "description": "Span element containing the number of items in the category. Important for extracting the count.",
+          "recommended_action": "extract_content"
+        }
+      ],
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "extract_content",
+          "selector": "ul.categories-list > li",
+          "selector_type": "css_selector",
+          "instructions": "Extract the text content of each category list item, which includes the category name and item count.",
+          "text": null
+        },
+        {
+          "id": "action_2",
+          "operation": "done",
+          "selector": null,
+          "selector_type": null,
+          "instructions": "Task completed: Extracted all categories and their corresponding item counts.",
+          "text": "Extracted all categories with the corresponding number of items in brackets."
+        }
+      ],
+      "transitions": [],
+      "important_elements": [
+        "ul.categories-list > li",
+        "ul.categories-list > li > a",
+        "ul.categories-list > li > a > span"
+      ]
+    }
+  ]
+}

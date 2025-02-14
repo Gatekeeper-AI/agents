@@ -1,0 +1,42 @@
+{
+  "task": "Search and order the book by the specified author",
+  "steps": [
+    {
+      "action": "navigate",
+      "url": "https://x.com",
+      "description": "Login to my twitter and click a post with my username: attack199850815 and password: Jack1234"
+    },
+    {
+      "description": "Open sign in",
+      "action": "click",
+      "selector": "[data-testid='loginButton']",
+      "selector_type": "css"
+    },
+    {
+      "description": "Enter email",
+      "action": "enter_text",
+      "selector": "text",
+      "selector_type": "name",
+      "text": "attack199850815"
+    },
+    {
+      "description": "Click next",
+      "action": "click",
+      "selector": "//button[.//span[normalize-space(text())='Next']]",
+      "selector_type": "xpath"
+    },
+    {
+      "description": "Enter password",
+      "action": "enter_text",
+      "selector": "password",
+      "selector_type": "name",
+      "text": "Jack1234"
+    },
+    {
+      "description": "Click login",
+      "action": "click",
+      "selector": "button[data-testid='LoginForm_Login_Button']",
+      "selector_type": "css"
+    }
+  ]
+}

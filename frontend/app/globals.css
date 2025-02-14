@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Courier New', Courier, monospace; /* Monospace font for terminal feel */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 0%; /* Black background */
+    --foreground: 120 100% 50%; /* Bright green text */
+    --card: 0 0% 0%;
+    --card-foreground: 120 100% 50%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 120 100% 50%;
+    --primary: 120 100% 50%; /* Bright green for primary elements */
+    --primary-foreground: 0 0% 0%;
+    --secondary: 120 50% 20%; /* Darker green for secondary elements */
+    --secondary-foreground: 120 100% 50%;
+    --muted: 120 50% 20%;
+    --muted-foreground: 120 100% 50%;
+    --accent: 120 50% 20%;
+    --accent-foreground: 120 100% 50%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 120 50% 20%; /* Dark green borders */
+    --input: 120 50% 20%;
+    --ring: 120 100% 50%; /* Bright green ring */
+    --chart-1: 120 100% 50%; /* Bright green for charts */
+    --chart-2: 120 80% 40%;
+    --chart-3: 120 60% 30%;
+    --chart-4: 120 40% 20%;
+    --chart-5: 120 20% 10%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%; /* Black background */
+    --foreground: 120 100% 50%; /* Bright green text */
+    --card: 0 0% 0%;
+    --card-foreground: 120 100% 50%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 120 100% 50%;
+    --primary: 120 100% 50%; /* Bright green for primary elements */
+    --primary-foreground: 0 0% 0%;
+    --secondary: 120 50% 20%; /* Darker green for secondary elements */
+    --secondary-foreground: 120 100% 50%;
+    --muted: 120 50% 20%;
+    --muted-foreground: 120 100% 50%;
+    --accent: 120 50% 20%;
+    --accent-foreground: 120 100% 50%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 120 50% 20%; /* Dark green borders */
+    --input: 120 50% 20%;
+    --ring: 120 100% 50%; /* Bright green ring */
+    --chart-1: 120 100% 50%; /* Bright green for charts */
+    --chart-2: 120 80% 40%;
+    --chart-3: 120 60% 30%;
+    --chart-4: 120 40% 20%;
+    --chart-5: 120 20% 10%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* For Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-foreground);
+}

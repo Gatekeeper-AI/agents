@@ -1,0 +1,757 @@
+{
+  "agentsJson": "1.0.0",
+  "baseUrl": "https://x.com/?mx=2",
+  "flows": [
+    {
+      "id": "flow_1",
+      "title": "X. It\u2019s what\u2019s happening / X",
+      "url": "https://x.com/?mx=2",
+      "interactive_elements": [
+        {
+          "name": "Login Button",
+          "tag": "a",
+          "selector": "a[data-testid=\"loginButton\"]",
+          "selector_type": "css_selector",
+          "description": "Button to navigate to the login page.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Username Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"username\"][name=\"text\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the username.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Next Button",
+          "tag": "button",
+          "selector": "button[role=\"button\"][type=\"button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to proceed after entering the username.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Password Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"current-password\"][name=\"password\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the password.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Login Submit Button",
+          "tag": "button",
+          "selector": "button[data-testid=\"LoginForm_Login_Button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to submit the login form.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Posts Tab",
+          "tag": "a",
+          "selector": "a[href=\"/attack199850815\"][role=\"tab\"]",
+          "selector_type": "css_selector",
+          "description": "Tab to view the user's posts.",
+          "recommended_action": "click_element"
+        }
+      ],
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "click_element",
+          "refined_selector": "a[data-testid=\"loginButton\"]",
+          "selector_type": "css_selector",
+          "instructions": "Click the sign in button."
+        }
+      ],
+      "transitions": []
+    },
+    {
+      "id": "flow_2",
+      "title": "X. It\u2019s what\u2019s happening / X",
+      "url": "https://x.com/?mx=2",
+      "interactive_elements": [
+        {
+          "name": "Login Button",
+          "tag": "a",
+          "selector": "a[data-testid=\"loginButton\"][href=\"/login\"]",
+          "selector_type": "css_selector",
+          "description": "The button that redirects to the login page.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Username Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"username\"][name=\"text\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for username, email, or phone number.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Next Button",
+          "tag": "button",
+          "selector": "button[role=\"button\"][type=\"button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to proceed after entering username.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Password Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"current-password\"][name=\"password\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for the password.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Login Submit Button",
+          "tag": "button",
+          "selector": "button[data-testid=\"LoginForm_Login_Button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to submit the login form.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Profile Tab",
+          "tag": "a",
+          "selector": "a[href=\"/attack199850815\"][role=\"tab\"]",
+          "selector_type": "css_selector",
+          "description": "Tab to navigate to the user's profile page.",
+          "recommended_action": "click_element"
+        }
+      ],
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "click_element",
+          "refined_selector": "a[data-testid=\"loginButton\"][href=\"/login\"]",
+          "selector_type": "css_selector",
+          "instructions": "Click the sign in button."
+        }
+      ],
+      "transitions": [
+        {
+          "trigger": "click",
+          "sourceActionId": "action_1",
+          "targetFlowId": "flow_3",
+          "relationship": {
+            "full_url": "https://x.com/i/flow/login",
+            "path": "/i/flow/login",
+            "query_params": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "flow_3",
+      "title": "Log in to X / X",
+      "url": "https://x.com/i/flow/login",
+      "interactive_elements": [
+        {
+          "name": "Login Button",
+          "tag": "a",
+          "selector": "a[data-testid=\"loginButton\"]",
+          "selector_type": "css_selector",
+          "description": "Button to navigate to the login form.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Username Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"username\"][name=\"text\"][type=\"text\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the username.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Password Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"current-password\"][name=\"password\"][type=\"password\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the password.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Next Button",
+          "tag": "button",
+          "selector": "button[role=\"button\"][type=\"button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to proceed after entering username.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Login Submit Button",
+          "tag": "button",
+          "selector": "button[data-testid=\"LoginForm_Login_Button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to submit the login form.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Profile Tab",
+          "tag": "a",
+          "selector": "a[href=\"/attack199850815\"][role=\"tab\"]",
+          "selector_type": "css_selector",
+          "description": "Navigates to the user's profile page.",
+          "recommended_action": "click_element"
+        }
+      ],
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "input_text",
+          "refined_selector": "input[autocomplete=\"username\"][name=\"text\"][type=\"text\"]",
+          "selector_type": "css_selector",
+          "text": "attack199850815",
+          "instructions": "Enter the username."
+        },
+        {
+          "id": "action_2",
+          "operation": "click_element",
+          "refined_selector": "button[role=\"button\"][type=\"button\"]",
+          "selector_type": "css_selector",
+          "instructions": "Click next."
+        },
+        {
+          "id": "action_3",
+          "operation": "input_text",
+          "refined_selector": "input[autocomplete=\"current-password\"][name=\"password\"][type=\"password\"]",
+          "selector_type": "css_selector",
+          "text": "Jack1234",
+          "instructions": "Enter the password."
+        },
+        {
+          "id": "action_4",
+          "operation": "click_element",
+          "refined_selector": "button[data-testid=\"LoginForm_Login_Button\"]",
+          "selector_type": "css_selector",
+          "instructions": "Click login."
+        },
+        {
+          "id": "action_5",
+          "operation": "search_google",
+          "refined_selector": null,
+          "selector_type": null,
+          "query": "attack199850815 on twitter",
+          "instructions": "Search for the user on twitter to find their posts."
+        },
+        {
+          "id": "action_6",
+          "operation": "go_to_url",
+          "refined_selector": null,
+          "selector_type": null,
+          "url": "https://twitter.com/attack199850815",
+          "instructions": "Go to the twitter profile."
+        },
+        {
+          "id": "action_7",
+          "operation": "click_element",
+          "refined_selector": "a[href=\"/attack199850815\"][role=\"tab\"]",
+          "selector_type": "css_selector",
+          "instructions": "Click on the posts tab."
+        }
+      ],
+      "transitions": []
+    },
+    {
+      "id": "flow_4",
+      "title": "Log in to X / X",
+      "url": "https://x.com/i/flow/login",
+      "interactive_elements": [
+        {
+          "name": "Login Button",
+          "tag": "a",
+          "selector": "a[data-testid=\"loginButton\"]",
+          "selector_type": "css_selector",
+          "description": "The main button to initiate the login process.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Username Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"username\"][name=\"text\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the username, email, or phone number.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Next Button",
+          "tag": "button",
+          "selector": "button[role=\"button\"][type=\"button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to proceed after entering the username.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Password Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"current-password\"][name=\"password\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the password.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Login Submit Button",
+          "tag": "button",
+          "selector": "button[data-testid=\"LoginForm_Login_Button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to submit the login form.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Posts Tab",
+          "tag": "a",
+          "selector": "a[href=\"/attack199850815\"][role=\"tab\"]",
+          "selector_type": "css_selector",
+          "description": "Tab to navigate to the user's profile page.",
+          "recommended_action": "click_element"
+        }
+      ],
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "click_element",
+          "refined_selector": "<selector_placeholder>",
+          "selector_type": "<selector_type_placeholder>",
+          "instructions": "Interact with element."
+        }
+      ],
+      "transitions": []
+    },
+    {
+      "id": "flow_5",
+      "title": "Log in to X / X",
+      "url": "https://x.com/i/flow/login",
+      "interactive_elements": [
+        {
+          "name": "Login Button",
+          "tag": "a",
+          "selector": "a[data-testid=\"loginButton\"][href=\"/login\"]",
+          "selector_type": "css_selector",
+          "description": "The main login button on the landing page.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Username Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"username\"][name=\"text\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the username, email, or phone number.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Next Button",
+          "tag": "button",
+          "selector": "button[type=\"button\"][role=\"button\"]:nth-of-type(2)",
+          "selector_type": "css_selector",
+          "description": "Button to proceed after entering username.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Password Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"current-password\"][name=\"password\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the password.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Login Submit Button",
+          "tag": "button",
+          "selector": "button[data-testid=\"LoginForm_Login_Button\"][type=\"button\"][role=\"button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to submit the login form.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Profile Tab",
+          "tag": "a",
+          "selector": "a[href=\"/attack199850815\"][role=\"tab\"]",
+          "selector_type": "css_selector",
+          "description": "Tab to view a user's profile.",
+          "recommended_action": "click_element"
+        }
+      ],
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "click_element",
+          "refined_selector": "<selector_placeholder>",
+          "selector_type": "<selector_type_placeholder>",
+          "instructions": "Interact with element."
+        }
+      ],
+      "transitions": []
+    },
+    {
+      "id": "flow_6",
+      "title": "Log in to X / X",
+      "url": "https://x.com/i/flow/login",
+      "interactive_elements": [
+        {
+          "name": "Login Button",
+          "tag": "a",
+          "selector": "a[data-testid=\"loginButton\"]",
+          "selector_type": "css_selector",
+          "description": "Navigates to the login form.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Username Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"username\"][name=\"text\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for the username.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Next Button",
+          "tag": "button",
+          "selector": "button[type=\"button\"]:nth-of-type(2)",
+          "selector_type": "css_selector",
+          "description": "Button to proceed after entering username.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Password Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"current-password\"][name=\"password\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for the password.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Login Submit Button",
+          "tag": "button",
+          "selector": "button[data-testid=\"LoginForm_Login_Button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to submit the login form.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Profile Tab",
+          "tag": "a",
+          "selector": "a[href=\"/attack199850815\"][role=\"tab\"]",
+          "selector_type": "css_selector",
+          "description": "Navigates to the user's profile page.",
+          "recommended_action": "click_element"
+        }
+      ],
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "click_element",
+          "refined_selector": "<selector_placeholder>",
+          "selector_type": "<selector_type_placeholder>",
+          "instructions": "Interact with element."
+        }
+      ],
+      "transitions": [
+        {
+          "trigger": "click",
+          "sourceActionId": "action_1",
+          "targetFlowId": "flow_7",
+          "relationship": {
+            "full_url": "https://x.com/home?mx=2",
+            "path": "/home",
+            "query_params": {
+              "mx": [
+                "2"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "flow_7",
+      "title": "(16) Home / X",
+      "url": "https://x.com/home?mx=2",
+      "interactive_elements": [
+        {
+          "name": "Login Button",
+          "tag": "a",
+          "selector": "a[data-testid=\"loginButton\"]",
+          "selector_type": "css_selector",
+          "description": "The main login button on the landing page.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Username Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"username\"][name=\"text\"][type=\"text\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the username.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Next Button",
+          "tag": "button",
+          "selector": "button[role=\"button\"][type=\"button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to proceed after entering username.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Password Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"current-password\"][name=\"password\"][type=\"password\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the password.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Login Submit Button",
+          "tag": "button",
+          "selector": "button[data-testid=\"LoginForm_Login_Button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to submit the login form.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Profile Tab",
+          "tag": "a",
+          "selector": "a[href=\"/attack199850815\"][role=\"tab\"]",
+          "selector_type": "css_selector",
+          "description": "Link to navigate to the user's profile.",
+          "recommended_action": "click_element"
+        }
+      ],
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "click_element",
+          "refined_selector": "<selector_placeholder>",
+          "selector_type": "<selector_type_placeholder>",
+          "instructions": "Interact with element."
+        }
+      ],
+      "transitions": [
+        {
+          "trigger": "click",
+          "sourceActionId": "action_1",
+          "targetFlowId": "flow_8",
+          "relationship": {
+            "full_url": "https://www.google.com/search?q=attack199850815%20on%20twitter&udm=14",
+            "path": "/search",
+            "query_params": {
+              "q": [
+                "attack199850815 on twitter"
+              ],
+              "udm": [
+                "14"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "flow_8",
+      "title": "attack199850815 on twitter - Google Search",
+      "url": "https://www.google.com/search?q=attack199850815%20on%20twitter&udm=14",
+      "interactive_elements": [
+        {
+          "name": "Login Button",
+          "tag": "a",
+          "selector": "a[data-testid=\"loginButton\"]",
+          "selector_type": "css_selector",
+          "description": "The main button to initiate the login process.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Username Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"username\"][name=\"text\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the username, email, or phone number.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Next Button",
+          "tag": "button",
+          "selector": "button[role=\"button\"][type=\"button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to proceed after entering the username.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Password Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"current-password\"][name=\"password\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the password.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Login Submit Button",
+          "tag": "button",
+          "selector": "button[data-testid=\"LoginForm_Login_Button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to submit the login form.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Profile Tab",
+          "tag": "a",
+          "selector": "a[href=\"/attack199850815\"][role=\"tab\"]",
+          "selector_type": "css_selector",
+          "description": "Tab to navigate to the user's profile page.",
+          "recommended_action": "click_element"
+        }
+      ],
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "click_element",
+          "refined_selector": "<selector_placeholder>",
+          "selector_type": "<selector_type_placeholder>",
+          "instructions": "Interact with element."
+        }
+      ],
+      "transitions": [
+        {
+          "trigger": "click",
+          "sourceActionId": "action_1",
+          "targetFlowId": "flow_9",
+          "relationship": {
+            "full_url": "https://x.com/attack199850815",
+            "path": "/attack199850815",
+            "query_params": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": "flow_9",
+      "title": "(17) JackAttack19982001 (@attack199850815) / X",
+      "url": "https://x.com/attack199850815",
+      "interactive_elements": [
+        {
+          "name": "Login Button",
+          "tag": "a",
+          "selector": "a[data-testid=\"loginButton\"]",
+          "selector_type": "css_selector",
+          "description": "The main button to initiate the login process.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Username Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"username\"][name=\"text\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the username, email, or phone number.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Next Button",
+          "tag": "button",
+          "selector": "button[role=\"button\"][type=\"button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to proceed after entering the username.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Password Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"current-password\"][name=\"password\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the password.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Login Submit Button",
+          "tag": "button",
+          "selector": "button[data-testid=\"LoginForm_Login_Button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to submit the login form after entering the password.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Posts Tab",
+          "tag": "a",
+          "selector": "a[href=\"/attack199850815\"][role=\"tab\"]",
+          "selector_type": "css_selector",
+          "description": "Tab to navigate to the user's posts on their profile.",
+          "recommended_action": "click_element"
+        }
+      ],
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "click_element",
+          "refined_selector": "<selector_placeholder>",
+          "selector_type": "<selector_type_placeholder>",
+          "instructions": "Interact with element."
+        }
+      ],
+      "transitions": []
+    },
+    {
+      "id": "flow_10",
+      "title": "(17) JackAttack19982001 (@attack199850815) / X",
+      "url": "https://x.com/attack199850815",
+      "interactive_elements": [
+        {
+          "name": "Login Button",
+          "tag": "a",
+          "selector": "a[data-testid=\"loginButton\"]",
+          "selector_type": "css_selector",
+          "description": "The main button to initiate the login process.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Username Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"username\"][name=\"text\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the username, email, or phone number.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Next Button",
+          "tag": "button",
+          "selector": "button[type=\"button\"]:nth-of-type(2)",
+          "selector_type": "css_selector",
+          "description": "Button to proceed to the next step after entering the username.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Password Input",
+          "tag": "input",
+          "selector": "input[autocomplete=\"current-password\"][name=\"password\"]",
+          "selector_type": "css_selector",
+          "description": "Input field for entering the password.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Login Submit Button",
+          "tag": "button",
+          "selector": "button[data-testid=\"LoginForm_Login_Button\"]",
+          "selector_type": "css_selector",
+          "description": "Button to submit the login form after entering the password.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Posts Tab",
+          "tag": "a",
+          "selector": "a[href=\"/attack199850815\"][role=\"tab\"]",
+          "selector_type": "css_selector",
+          "description": "Tab to navigate to the user's posts.",
+          "recommended_action": "click_element"
+        }
+      ],
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "click_element",
+          "refined_selector": "<selector_placeholder>",
+          "selector_type": "<selector_type_placeholder>",
+          "instructions": "Interact with element."
+        }
+      ],
+      "transitions": []
+    }
+  ]
+}

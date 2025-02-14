@@ -1,0 +1,386 @@
+{
+  "agentsJson": "1.0.0",
+  "baseUrl": "https://www.google.com/",
+  "flows": [
+    {
+      "id": "flow_1",
+      "title": "Google",
+      "url": "https://www.google.com/",
+      "interactive_elements": {},
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "click_element",
+          "xpath": "html > body > div > div:nth-of-type(3) > form > div > div > div > div > div:nth-of-type(2) > textarea.gLFyf[title=\"Search\"][aria-label=\"Search\"][placeholder][autocomplete=\"off\"][id=\"APjFqb\"][name=\"q\"][role=\"combobox\"]",
+          "instructions": "Interact with element."
+        }
+      ],
+      "transitions": [],
+      "important_elements": [
+        {
+          "name": "Search Bar",
+          "tag": "textarea",
+          "xpath": "html/body/div/div[3]/form/div/div/div/div/div[2]/textarea",
+          "description": "This is the primary input area where users can enter search queries.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Google Search Button",
+          "tag": "input",
+          "xpath": "html/body/div/div[3]/form/div/div/div[2]/div[4]/div[6]/center/input",
+          "description": "This button submits the query entered in the search bar.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Images Filter Link",
+          "tag": "a",
+          "xpath": "html/body/div[3]/div/div[4]/div/div/div/div/div/div/div/div/div/div/div/div[3]/a",
+          "description": "Link to navigate to image search results.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Videos Filter Link",
+          "tag": "a",
+          "xpath": "html/body/div[3]/div/div[6]/div/div/div/div/div/div/div/div/div/div/div/div[3]/a",
+          "description": "Link to navigate to video search results.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "News Filter Link",
+          "tag": "a",
+          "xpath": "html/body/div[3]/div/div[4]/div/div/div/div/div/div/div/div/div/div/div/div[4]/a",
+          "description": "Link to navigate to news search results.",
+          "recommended_action": "click_element"
+        }
+      ]
+    },
+    {
+      "id": "flow_2",
+      "title": "Google",
+      "url": "https://www.google.com/",
+      "interactive_elements": {},
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "click_element",
+          "xpath": "html > body > div > div:nth-of-type(3) > form > div > div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(6) > center > input.gNO89b[aria-label=\"Google Search\"][name=\"btnK\"][role=\"button\"][type=\"submit\"]",
+          "instructions": "Interact with element."
+        }
+      ],
+      "transitions": [
+        {
+          "trigger": "click",
+          "sourceActionId": "action_1",
+          "targetFlowId": "flow_3",
+          "relationship": {
+            "full_url": "https://www.google.com/search?q=example+search&sca_esv=2c87421130c61f90&source=hp&ei=D2ioZ_vHDqu9ptQPosDOQA&iflsig=ACkRmUkAAAAAZ6h2HyWftO153LvKYxJhlf3suE_6wOuC&ved=0ahUKEwi7i8rulraLAxWrnokEHSKgEwgQ4dUDCBA&oq=example+search&gs_lp=Egdnd3Mtd2l6Ig5leGFtcGxlIHNlYXJjaDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeSKksUABYM3AAeACQAQCYASygAaYBqgEBNLgBDMgBAPgBAZgCBKACsQGYAwCSBwE0oAfAFg&sclient=gws-wiz&sei=GmioZ8DcPKKs5NoPpvfhQQ",
+            "path": "/search",
+            "query_params": {
+              "q": [
+                "example search"
+              ],
+              "sca_esv": [
+                "2c87421130c61f90"
+              ],
+              "source": [
+                "hp"
+              ],
+              "ei": [
+                "D2ioZ_vHDqu9ptQPosDOQA"
+              ],
+              "iflsig": [
+                "ACkRmUkAAAAAZ6h2HyWftO153LvKYxJhlf3suE_6wOuC"
+              ],
+              "ved": [
+                "0ahUKEwi7i8rulraLAxWrnokEHSKgEwgQ4dUDCBA"
+              ],
+              "oq": [
+                "example search"
+              ],
+              "gs_lp": [
+                "Egdnd3Mtd2l6Ig5leGFtcGxlIHNlYXJjaDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeSKksUABYM3AAeACQAQCYASygAaYBqgEBNLgBDMgBAPgBAZgCBKACsQGYAwCSBwE0oAfAFg"
+              ],
+              "sclient": [
+                "gws-wiz"
+              ],
+              "sei": [
+                "GmioZ8DcPKKs5NoPpvfhQQ"
+              ]
+            }
+          }
+        }
+      ],
+      "important_elements": [
+        {
+          "name": "Search Input Field",
+          "tag": "textarea",
+          "xpath": "html/body/div/div[3]/form/div/div/div/div/div[2]/textarea",
+          "description": "The main input field for entering a search query on the Google homepage.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Google Search Button",
+          "tag": "input",
+          "xpath": "html/body/div/div[3]/form/div/div/div[2]/div[4]/div[6]/center/input",
+          "description": "The button to initiate a Google search after entering text in the search field.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Images Link",
+          "tag": "a",
+          "xpath": "html/body/div[3]/div/div[4]/div/div/div/div/div/div/div/div/div/div/div/div[2]/a",
+          "description": "A navigational link to the Images section from the search results page.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Videos Link",
+          "tag": "a",
+          "xpath": "html/body/div[3]/div/div[6]/div/div/div/div/div/div/div/div/div/div/div/div[3]/a",
+          "description": "A navigational link to the Videos section from the search results page.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "News Link",
+          "tag": "a",
+          "xpath": "html/body/div[3]/div/div[4]/div/div/div/div/div/div/div/div/div/div/div/div[4]/a",
+          "description": "A navigational link to the News section from the search results page.",
+          "recommended_action": "click_element"
+        }
+      ]
+    },
+    {
+      "id": "flow_3",
+      "title": "example search - Google Search",
+      "url": "https://www.google.com/search?q=example+search&sca_esv=2c87421130c61f90&source=hp&ei=D2ioZ_vHDqu9ptQPosDOQA&iflsig=ACkRmUkAAAAAZ6h2HyWftO153LvKYxJhlf3suE_6wOuC&ved=0ahUKEwi7i8rulraLAxWrnokEHSKgEwgQ4dUDCBA&oq=example+search&gs_lp=Egdnd3Mtd2l6Ig5leGFtcGxlIHNlYXJjaDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeSKksUABYM3AAeACQAQCYASygAaYBqgEBNLgBDMgBAPgBAZgCBKACsQGYAwCSBwE0oAfAFg&sclient=gws-wiz&sei=GmioZ8DcPKKs5NoPpvfhQQ",
+      "interactive_elements": {},
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "click_element",
+          "xpath": "html > body > div:nth-of-type(3) > div > div:nth-of-type(4) > div > div > div > div > div > div > div > div > div > div > div > div:nth-of-type(2) > a.nPDzT.T3FoJb[href=\"/search?sca_esv=2c87421130c61f90&q=example+search&udm=2&fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBjLjqIC1CYKD9D-DQAQS3Z6fZ--OaZn3DMTxQWxLIg4hW_wnpGGXBIfLuKGahloLhhF4Cjr88x0EJrpzKfuPpKQvQkIYtxTzAtC7HVc44bgv8Z6Qu0Ek9-zSKFG4kb2U79y48XVGI0tTaOhbrjIBaiAUoAw_qLxuVqzNhliArLreFyrUSg&sa=X&ved=2ahUKEwjNgJ70lraLAxUYMVkFHWukCF0QtKgLegQIFxAB\"][role=\"link\"]",
+          "instructions": "Interact with element."
+        }
+      ],
+      "transitions": [
+        {
+          "trigger": "click",
+          "sourceActionId": "action_1",
+          "targetFlowId": "flow_4",
+          "relationship": {
+            "full_url": "https://www.google.com/search?sca_esv=2c87421130c61f90&q=example+search&udm=2&fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBjLjqIC1CYKD9D-DQAQS3Z6fZ--OaZn3DMTxQWxLIg4hW_wnpGGXBIfLuKGahloLhhF4Cjr88x0EJrpzKfuPpKQvQkIYtxTzAtC7HVc44bgv8Z6Qu0Ek9-zSKFG4kb2U79y48XVGI0tTaOhbrjIBaiAUoAw_qLxuVqzNhliArLreFyrUSg&sa=X&ved=2ahUKEwjNgJ70lraLAxUYMVkFHWukCF0QtKgLegQIFxAB&biw=1280&bih=1100&dpr=1",
+            "path": "/search",
+            "query_params": {
+              "sca_esv": [
+                "2c87421130c61f90"
+              ],
+              "q": [
+                "example search"
+              ],
+              "udm": [
+                "2"
+              ],
+              "fbs": [
+                "ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBjLjqIC1CYKD9D-DQAQS3Z6fZ--OaZn3DMTxQWxLIg4hW_wnpGGXBIfLuKGahloLhhF4Cjr88x0EJrpzKfuPpKQvQkIYtxTzAtC7HVc44bgv8Z6Qu0Ek9-zSKFG4kb2U79y48XVGI0tTaOhbrjIBaiAUoAw_qLxuVqzNhliArLreFyrUSg"
+              ],
+              "sa": [
+                "X"
+              ],
+              "ved": [
+                "2ahUKEwjNgJ70lraLAxUYMVkFHWukCF0QtKgLegQIFxAB"
+              ],
+              "biw": [
+                "1280"
+              ],
+              "bih": [
+                "1100"
+              ],
+              "dpr": [
+                "1"
+              ]
+            }
+          }
+        }
+      ],
+      "important_elements": [
+        {
+          "name": "Search Input Field",
+          "tag": "textarea",
+          "xpath": "html/body/div/div[3]/form/div/div/div/div/div[2]/textarea",
+          "description": "The main search input field where users type their query.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Google Search Button",
+          "tag": "input",
+          "xpath": "html/body/div/div[3]/form/div/div/div[2]/div[4]/div[6]/center/input",
+          "description": "Button to submit search query for results.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Images Filter Link",
+          "tag": "a",
+          "xpath": "html/body/div[3]/div/div[4]/div/div/div/div/div/div/div/div/div/div/div/div[2]/a",
+          "description": "Link to view Image search results.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Videos Filter Link",
+          "tag": "a",
+          "xpath": "html/body/div[3]/div/div[6]/div/div/div/div/div/div/div/div/div/div/div/div[3]/a",
+          "description": "Link to view Video search results.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "News Filter Link",
+          "tag": "a",
+          "xpath": "html/body/div[3]/div/div[4]/div/div/div/div/div/div/div/div/div/div/div/div[4]/a",
+          "description": "Link to view News results.",
+          "recommended_action": "click_element"
+        }
+      ]
+    },
+    {
+      "id": "flow_4",
+      "title": "example search - Google Search",
+      "url": "https://www.google.com/search?sca_esv=2c87421130c61f90&q=example+search&udm=2&fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBjLjqIC1CYKD9D-DQAQS3Z6fZ--OaZn3DMTxQWxLIg4hW_wnpGGXBIfLuKGahloLhhF4Cjr88x0EJrpzKfuPpKQvQkIYtxTzAtC7HVc44bgv8Z6Qu0Ek9-zSKFG4kb2U79y48XVGI0tTaOhbrjIBaiAUoAw_qLxuVqzNhliArLreFyrUSg&sa=X&ved=2ahUKEwjNgJ70lraLAxUYMVkFHWukCF0QtKgLegQIFxAB&biw=1280&bih=1100&dpr=1",
+      "interactive_elements": {},
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "click_element",
+          "xpath": "html > body > div:nth-of-type(3) > div > div:nth-of-type(6) > div > div > div > div > div > div > div > div > div > div > div > div:nth-of-type(3) > a.nPDzT.T3FoJb[href=\"/search?sca_esv=2c87421130c61f90&biw=1280&bih=1100&q=example+search&udm=7&fbs=ABzOT_A52yOpg6LE1eM2unewRYa8u1AFqpECEHUebpn29N1vEBj0tWdQed29ni9B2eLkPmUa2lYr9Ja1pIedlsjsSIvuFtxsjSz467kLOxvbyziowpUdKCt7XRH62DRHVZrqSnDOYRv1ScJYBy86ynS2jZsM299maIJce0BaPdASt2yMz3bzKANam4dnpvQc7jVOicsbfLnnaFinvxuzvqsGuwMd6sauqg&sa=X&ved=2ahUKEwjRrLL5lraLAxXQD1kFHegmIRoQtKgLegQICxAB\"][role=\"link\"]",
+          "instructions": "Interact with element."
+        }
+      ],
+      "transitions": [
+        {
+          "trigger": "click",
+          "sourceActionId": "action_1",
+          "targetFlowId": "flow_5",
+          "relationship": {
+            "full_url": "https://www.google.com/search?sca_esv=2c87421130c61f90&q=example+search&udm=7&fbs=ABzOT_A52yOpg6LE1eM2unewRYa8u1AFqpECEHUebpn29N1vEBj0tWdQed29ni9B2eLkPmUa2lYr9Ja1pIedlsjsSIvuFtxsjSz467kLOxvbyziowpUdKCt7XRH62DRHVZrqSnDOYRv1ScJYBy86ynS2jZsM299maIJce0BaPdASt2yMz3bzKANam4dnpvQc7jVOicsbfLnnaFinvxuzvqsGuwMd6sauqg&sa=X&ved=2ahUKEwjRrLL5lraLAxXQD1kFHegmIRoQtKgLegQICxAB&biw=1280&bih=1100&dpr=1",
+            "path": "/search",
+            "query_params": {
+              "sca_esv": [
+                "2c87421130c61f90"
+              ],
+              "q": [
+                "example search"
+              ],
+              "udm": [
+                "7"
+              ],
+              "fbs": [
+                "ABzOT_A52yOpg6LE1eM2unewRYa8u1AFqpECEHUebpn29N1vEBj0tWdQed29ni9B2eLkPmUa2lYr9Ja1pIedlsjsSIvuFtxsjSz467kLOxvbyziowpUdKCt7XRH62DRHVZrqSnDOYRv1ScJYBy86ynS2jZsM299maIJce0BaPdASt2yMz3bzKANam4dnpvQc7jVOicsbfLnnaFinvxuzvqsGuwMd6sauqg"
+              ],
+              "sa": [
+                "X"
+              ],
+              "ved": [
+                "2ahUKEwjRrLL5lraLAxXQD1kFHegmIRoQtKgLegQICxAB"
+              ],
+              "biw": [
+                "1280"
+              ],
+              "bih": [
+                "1100"
+              ],
+              "dpr": [
+                "1"
+              ]
+            }
+          }
+        }
+      ],
+      "important_elements": [
+        {
+          "name": "Search Bar",
+          "tag": "textarea",
+          "xpath": "html > body > div > div:nth-of-type(3) > form > div > div > div > div > div:nth-of-type(2) > textarea.gLFyf[title=\"Search\"][aria-label=\"Search\"][placeholder][autocomplete=\"off\"][id=\"APjFqb\"][name=\"q\"][role=\"combobox\"]",
+          "description": "The search bar is essential for entering queries to navigate to relevant results.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Google Search Button",
+          "tag": "input",
+          "xpath": "html > body > div > div:nth-of-type(3) > form > div > div > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(6) > center > input.gNO89b[aria-label=\"Google Search\"][name=\"btnK\"][role=\"button\"][type=\"submit\"]",
+          "description": "Clicking this button is critical to execute the search query input in the search bar.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Images Filter Link",
+          "tag": "a",
+          "xpath": "html > body > div:nth-of-type(3) > div > div:nth-of-type(4) > div > div > div > div > div > div > div > div > div > div > div > div:nth-of-type(2) > a.nPDzT.T3FoJb[href=\"/search?sca_esv=2c87421130c61f90&q=example+search&udm=2&fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBjLjqIC1CYKD9D-DQAQS3Z6fZ--OaZn3DMTxQWxLIg4hW_wnpGGXBIfLuKGahloLhhF4Cjr88x0EJrpzKfuPpKQvQkIYtxTzAtC7HVc44bgv8Z6Qu0Ek9-zSKFG4kb2U79y48XVGI0tTaOhbrjIBaiAUoAw_qLxuVqzNhliArLreFyrUSg&sa=X&ved=2ahUKEwjNgJ70lraLAxUYMVkFHWukCF0QtKgLegQIFxAB\"][role=\"link\"]",
+          "description": "Provides an option to filter search results to view only images related to the query.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Videos Filter Link",
+          "tag": "a",
+          "xpath": "html > body > div:nth-of-type(3) > div > div:nth-of-type(6) > div > div > div > div > div > div > div > div > div > div > div > div:nth-of-type(3) > a.nPDzT.T3FoJb[href=\"/search?sca_esv=2c87421130c61f90&biw=1280&bih=1100&q=example+search&udm=7&fbs=ABzOT_A52yOpg6LE1eM2unewRYa8u1AFqpECEHUebpn29N1vEBj0tWdQed29ni9B2eLkPmUa2lYr9Ja1pIedlsjsSIvuFtxsjSz467kLOxvbyziowpUdKCt7XRH62DRHVZrqSnDOYRv1ScJYBy86ynS2jZsM299maIJce0BaPdASt2yMz3bzKANam4dnpvQc7jVOicsbfLnnaFinvxuzvqsGuwMd6sauqg&sa=X&ved=2ahUKEwjRrLL5lraLAxXQD1kFHegmIRoQtKgLegQICxAB\"][role=\"link\"]",
+          "description": "Allows filtering of search results to display videos relevant to the search query.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "News Filter Link",
+          "tag": "a",
+          "xpath": "html > body > div:nth-of-type(3) > div > div:nth-of-type(4) > div > div > div > div > div > div > div > div > div > div > div > div:nth-of-type(4) > a.LatpMc.nPDzT.T3FoJb[href=\"/search?sca_esv=2c87421130c61f90&biw=1280&bih=1100&q=example+search&tbm=nws&source=lnms&fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBjLjqIC1CYKD9D-DQAQS3Z6fZ--OaZn3DMTxQWxLIg4hW_wnpGGXBIfLuKGahloLhhF4Cjr88x0EJrpzKfuPpKQvQkIYtxTzAtC7HVc44bgv8Z6Qu0Ek9-zSKFG4kb2U79y48XVGI0tTaOhbrjIBaiAUoAw_qLxuVqzNhliArLreFyrUSg&sa=X&ved=2ahUKEwianr__lraLAxW5E1kFHbMrJFoQ0pQJegQICxAB\"][role=\"link\"]",
+          "description": "Filter to view news articles relevant to the search query.",
+          "recommended_action": "click_element"
+        }
+      ]
+    },
+    {
+      "id": "flow_5",
+      "title": "example search - Google Search",
+      "url": "https://www.google.com/search?sca_esv=2c87421130c61f90&q=example+search&udm=7&fbs=ABzOT_A52yOpg6LE1eM2unewRYa8u1AFqpECEHUebpn29N1vEBj0tWdQed29ni9B2eLkPmUa2lYr9Ja1pIedlsjsSIvuFtxsjSz467kLOxvbyziowpUdKCt7XRH62DRHVZrqSnDOYRv1ScJYBy86ynS2jZsM299maIJce0BaPdASt2yMz3bzKANam4dnpvQc7jVOicsbfLnnaFinvxuzvqsGuwMd6sauqg&sa=X&ved=2ahUKEwjRrLL5lraLAxXQD1kFHegmIRoQtKgLegQICxAB&biw=1280&bih=1100&dpr=1",
+      "interactive_elements": {},
+      "actions": [
+        {
+          "id": "action_1",
+          "operation": "click_element",
+          "xpath": "html > body > div:nth-of-type(3) > div > div:nth-of-type(4) > div > div > div > div > div > div > div > div > div > div > div > div:nth-of-type(4) > a.LatpMc.nPDzT.T3FoJb[href=\"/search?sca_esv=2c87421130c61f90&biw=1280&bih=1100&q=example+search&tbm=nws&source=lnms&fbs=ABzOT_CWdhQLP1FcmU5B0fn3xuWpA-dk4wpBWOGsoR7DG5zJBjLjqIC1CYKD9D-DQAQS3Z6fZ--OaZn3DMTxQWxLIg4hW_wnpGGXBIfLuKGahloLhhF4Cjr88x0EJrpzKfuPpKQvQkIYtxTzAtC7HVc44bgv8Z6Qu0Ek9-zSKFG4kb2U79y48XVGI0tTaOhbrjIBaiAUoAw_qLxuVqzNhliArLreFyrUSg&sa=X&ved=2ahUKEwianr__lraLAxW5E1kFHbMrJFoQ0pQJegQICxAB\"][role=\"link\"]",
+          "instructions": "Interact with element."
+        }
+      ],
+      "transitions": [],
+      "important_elements": [
+        {
+          "name": "Search Bar",
+          "tag": "textarea",
+          "xpath": "html/body/div/div[3]/form/div/div/div/div/div[2]/textarea",
+          "description": "The primary input field for entering search queries.",
+          "recommended_action": "input_text"
+        },
+        {
+          "name": "Google Search Button",
+          "tag": "input",
+          "xpath": "html/body/div/div[3]/form/div/div/div[2]/div[4]/div[6]/center/input",
+          "description": "Button to initiate a search query entered in the search bar.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Images Link",
+          "tag": "a",
+          "xpath": "html/body/div[3]/div/div[4]/div/div/div/div/div/div/div/div/div/div/div/div[2]/a",
+          "description": "Navigation link to switch to image search results.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "Videos Link",
+          "tag": "a",
+          "xpath": "html/body/div[3]/div/div[6]/div/div/div/div/div/div/div/div/div/div/div/div[3]/a",
+          "description": "Navigation link to switch to video search results.",
+          "recommended_action": "click_element"
+        },
+        {
+          "name": "News Link",
+          "tag": "a",
+          "xpath": "html/body/div[3]/div/div[4]/div/div/div/div/div/div/div/div/div/div/div/div[4]/a",
+          "description": "Navigation link to switch to news search results.",
+          "recommended_action": "click_element"
+        }
+      ]
+    }
+  ]
+}
