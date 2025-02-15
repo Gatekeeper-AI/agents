@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional
 from fastapi.middleware.cors import CORSMiddleware
 import actionPrompt
 from loguru import logger
-from browser_user.generate_agents_json import run_agent_and_process_history
+from browser_user.generate_agents_json import run_agent_and_process_history, run_agent_and_return_history
 import uvicorn
 import requests
 from db import mongodb
@@ -30,13 +30,44 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 load_dotenv()  
-
-
+#Dominos username - gigac3000@gmail.com
+#Dominos pass -upVyjw.c4b#8pr
 DEFAULT_PROMPT = "Use this website as a user of the website using the most common actions"
 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
+
+@app.get("/api/v1/query_agent")
+async def query_agent(
+    prompt: str = Query(..., description="The prompt for the agent"),
+    url: str = Query(None, description="The base URL for the agent"),
+    max_steps: int = Query(20, description="The maximum number of steps the agent should take")
+):
+    """
+    API endpoint to run the agent and return its history.
+    """
+    logger.info(f"Received request to run agent on {url} with prompt: {prompt}")
+    
+    # Run agent and get history
+    history_data = await run_agent_and_return_history(prompt, url, max_steps)
+
+    if not isinstance(history_data, dict):
+        history_data = history_data.__dict__  # Convert to dictionary if it's an object
+    # Find the final result
+    final_result = None
+    for result in history_data.get("all_results", []):
+        print(result)
+        if result.get("is_done", False):  # Check if this is the final result
+            final_result = result.get("extracted_content", None)
+            break
+
+    if final_result:
+        return JSONResponse(content={"result": final_result}, status_code=200)
+    else:
+        return JSONResponse(content={"error": "No result found"}, status_code=404)
+
+
 
 @app.get("/initiate")
 async def initiate(prompt: str, url: str, actions):

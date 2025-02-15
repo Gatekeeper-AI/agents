@@ -16,22 +16,69 @@ interface Message {
 export default function ChatInterface() {
   const [input, setInput] = useState("")
   const [messages, setMessages] = useState<Message[]>([])
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     setMessages([
       {
         role: "agent",
-        content: "Hello, I am a generative AI agent. How may I assist you today?",
+        content: "Ask me to do anything!",
         timestamp: new Date().toLocaleTimeString(),
       },
     ])
   }, [])
 
-  return (
+  const handleSubmit = async () => {
+    if (!input.trim() || isLoading) return
+
+    // Add user message
+    const userMessage = {
+      role: "user" as const,
+      content: input,
+      timestamp: new Date().toLocaleTimeString(),
+    }
+    setMessages(prev => [...prev, userMessage])
+    setInput("")
     
+    setIsLoading(true)
+    
+    try {
+      const response = await fetch(`http://127.0.0.1:8000/api/v1/query_agent?prompt=${encodeURIComponent(input)}&max_steps=20`)
+      if (!response.ok) throw new Error('Failed to get response')
+      
+      const data = await response.json()
+
+      // Check if the response contains an error
+      if (data.error) {
+        throw new Error(data.error)
+      }
+
+      // Extract the result from the response
+      const agentContent = data.result || "Sorry, I couldn't find an answer."
+
+      // Add agent message
+      const agentMessage = {
+        role: "agent" as const,
+        content: agentContent,
+        timestamp: new Date().toLocaleTimeString(),
+      }
+      setMessages(prev => [...prev, agentMessage])
+    } catch (error) {
+      console.error('API Error:', error)
+      const errorMessage = {
+        role: "agent" as const,
+        content: error instanceof Error ? error.message : "Sorry, there was an error processing your request.",
+        timestamp: new Date().toLocaleTimeString(),
+      }
+      setMessages(prev => [...prev, errorMessage])
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return (
     <div className="flex-1 flex flex-col h-full">
-      {/* Chat Messages */}
-      <ScrollArea className="flex-1 p-4"> {/* Corrected ScrollArea Usage */}
+      <ScrollArea className="flex-1 p-4">
         <div className="space-y-4">
           {messages.map((message, index) => (
             <div
@@ -47,7 +94,7 @@ export default function ChatInterface() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-medium">
-                    {message.role === "agent" ? "GenerativeAgent" : "G5"}
+                    {message.role === "agent" ? "Agent" : "You"}
                   </span>
                   <span className="text-sm text-muted-foreground">
                     {message.timestamp}
@@ -83,16 +130,27 @@ export default function ChatInterface() {
         </div>
       </ScrollArea>
 
-      {/* Input Area */}
       <div className="p-4 border-t">
         <div className="flex gap-2">
           <Textarea
-            placeholder="Type a message as a customer"
+            placeholder="Type your task here..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             className="min-h-[44px] max-h-32 resize-none"
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault()
+                handleSubmit()
+              }
+            }}
           />
-          <Button className="px-8">Send</Button>
+          <Button 
+            onClick={handleSubmit}
+            disabled={isLoading}
+            className="px-8"
+          >
+            {isLoading ? "Processing..." : "Send"}
+          </Button>
         </div>
       </div>
     </div>

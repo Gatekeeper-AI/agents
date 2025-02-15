@@ -1,5 +1,5 @@
 // Header.tsx
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { useLogin, usePrivy, useSolanaWallets } from "@privy-io/react-auth";
 import {
@@ -8,6 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useUserStore } from '@/store/useAuthStore';
 
 export function Header() {
   const { login } = useLogin({
@@ -16,6 +17,9 @@ export function Header() {
   const { ready, authenticated, user, logout } = usePrivy();
   const { wallets } = useSolanaWallets();
   const [isOpen, setIsOpen] = useState(false);
+
+  const { setWalletAddress } = useUserStore();
+
 
   const formatWalletAddress = (address: string) => {
     if (address && address.length > 10) {
@@ -28,6 +32,13 @@ export function Header() {
     await logout();
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    if (authenticated && wallets.length > 0) {
+      setWalletAddress(wallets[0].address);
+    }
+  }, [authenticated, wallets, setWalletAddress]);
+
 
   return (
     <header className="h-14 border-b px-4 flex items-center justify-between">

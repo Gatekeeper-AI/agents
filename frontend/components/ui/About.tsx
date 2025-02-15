@@ -1,8 +1,19 @@
 import { useState, useEffect } from "react";
 
 export default function About() {
-  const text = "Gatekeeper is an agentic AI framework that enables websites to monetize access through intelligent automation.";
-  const maintext = `\n- Agents autonomously explore and complete web tasks\n- Generate an agents.json file for structured automation\n- Save actions.json to quickly reuse past actions\n- Reduce reliance on expensive LLM queries\n- Enable seamless AI-driven site navigation and monetization`;
+  const text = " Gatekeeper is an agentic AI framework allow agents to get stuff done.";
+  const maintext = `\n- Agents autonomously explore and complete web tasks
+- Generate an agents.json file for structured automation
+- Save actions.json to quickly reuse past actions
+- Reduce reliance on expensive LLM queries
+- Enable seamless AI-driven site navigation and monetization
+
+Features:
+- Give agent control of web browser
+- Coming Soon: Task Memory
+- Coming Soon: Agent Web3 Integration
+- Coming Soon: Parallel Execution `;
+
   const [displayedText, setDisplayedText] = useState("_");
   const [showMainText, setShowMainText] = useState(false);
 
