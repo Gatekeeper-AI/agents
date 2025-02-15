@@ -18,10 +18,8 @@ import uvicorn
 import requests
 from db import mongodb
 import seleniumScript
-
 import time
 import json
-from loguru import logger
 app = FastAPI()
 
 app.add_middleware(
@@ -32,6 +30,9 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 load_dotenv()  
+
+
+DEFAULT_PROMPT = "Use this website as a user of the website using the most common actions"
 
 @app.get("/")
 async def root():
@@ -48,13 +49,10 @@ async def initiate(prompt: str, url: str, actions):
     if agents_json == None:
         with open('testAgents.json') as f:
             agents_json = json.load(f)
-            
-            print(agents_json)
-
+    logger.info(f"Found {agents_json}")
 
     # Call chat to get the actions.json based on the prompt and agentsJSON
     action_sequence = await generate_actions_inner(UserPrompt(prompt=prompt, agents_json=agents_json))
-
 
     # Run actions through selenium
     seleniumAgent = seleniumScript.SeleniumAgent()
@@ -64,27 +62,17 @@ async def initiate(prompt: str, url: str, actions):
             action_sequence = ActionSequence.from_json(json_data)
     action_sequence = ActionSequence.from_json(json_data)
     seleniumAgent.follow_actions(action_sequence)
-
     return {"message": "Hello World"}
+
 
 @app.get("/get_json")
 async def get_agents_json(
     url: str = Query(..., description="The input URL to check for agents.json"),
-    prompt: str = Query(..., description="The prompt for agent generation")
+    prompt: str = Query(None, description="The prompt for agent generation")
 ):
-    # if prompt == None:
-    #     try:
-    #         async with httpx.AsyncClient() as client:
-    #             # Ensure no trailing slash before appending /agents.json
-    #             agents_url = url.rstrip("/") + "/agents.json"
-    #             response = await client.get(agents_url)
-    #             response.raise_for_status()
-    #             return response.json()
-    #     except Exception as e:
-    #         logger.info(f"Could not retrieve agents.json from {url}: {e}")
-
+    prompt = prompt or DEFAULT_PROMPT  
+    logger.info(f"Get JSON Called with prompt: {prompt}")
     return await get_agents_json_inner(url, prompt)
-    
 
 
 async def get_agents_json_inner(
@@ -99,8 +87,9 @@ async def get_agents_json_inner(
     stores it in the database, and returns the configuration.
     """
     # Fallback prompt if user didn't supply one
-    if not prompt.strip():
-        prompt = f"Generate an api reference for website {url}"
+
+
+    logger.info(f"Getting agents.json for {url} prompt: {prompt}")
 
     # Step 1: Attempt to retrieve agents.json from the input URL
     agents_url = url.rstrip("/") + "/agents.json"
@@ -144,27 +133,26 @@ async def get_agents_json_inner(
         logger.info(f"Could not retrieve agents.json from {agents_url}: {e}")
 
     # Step 2: Check the database for agents.json
-    logger.info("Checking the database for existing agents.json config.")
-    db = mongodb.get_database("NYUDB")
-    collection = db["Sites"]
+    # logger.info("Checking the database for existing agents.json config.")
+    # db = mongodb.get_database("NYUDB")
+    # collection = db["Sites"]
 
-    try:
-        document = collection.find_one({"url": url})
-        if document and "config" in document:
-            logger.info("Found agents.json in database.")
-            return document["config"]
-        else:
-            logger.info("No agents.json in database for this URL.")
-    except Exception as e:
-        logger.exception(f"Error checking the database for config: {e}")
+    # try:
+    #     document = collection.find_one({"url": url})
+    #     if document and "config" in document:
+    #         logger.info("Found agents.json in database.")
+    #         return document["config"]
+    #     else:
+    #         logger.info("No agents.json in database for this URL.")
+    # except Exception as e:
+    #     logger.exception(f"Error checking the database for config: {e}")
 
-    # Step 3: Generate a new agents.json, store it in the database, and return it
-    logger.info("Generating a new agents.json using the provided prompt.")
+    logger.info(f"Generating a new agents.json using the provided prompt: {url}")
     try:
         final_config = await run_agent_and_process_history(base_url=url, prompt=prompt)
         document = {"url": url, "config": final_config}
-        collection.insert_one(document)
-        logger.info("New agents.json generated and saved to database.")
+        # collection.insert_one(document)
+        logger.info(f"New agents.json generated and saved to database: {document} ",indent=2)
         return final_config
     except Exception as exc:
         logger.exception("Error during generation of agents.json.")
@@ -185,10 +173,11 @@ async def generate_actions(request: UserPrompt):
     actions =  await generate_actions_inner(request)
     print("actions ", actions)
     # # Convert the actions to a JSON string
-    # actions_json = json.dumps(actions)
+    actions_json = json.dumps(actions)
 
     with open("actions.json") as f:
         actions_json = json.loads(f.read())
+        logger.info(f'Trying to open actions.json {actions_json}')
         action_sequence = ActionSequence.from_json(actions_json)
     return actions_json
 

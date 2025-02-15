@@ -1,21 +1,20 @@
 {
-  "task": "Extract category names and counts from ASCII Art Archive",
+  "task": "Extract all categories and their corresponding item counts from ASCII Art Archive",
   "steps": [
     {
       "action": "navigate",
       "url": "https://www.asciiart.eu/",
-      "description": "Navigate to the main page of the ASCII Art Archive."
+      "description": "Navigate to the ASCII Art Archive homepage to access the category list."
     },
     {
       "action": "extract_content",
       "selector": "ul.categories-list > li",
       "selector_type": "css_selector",
-      "description": "Extract the text content of each category list item, including the category name and the count of ASCII arts."
+      "description": "Extract the text content of each category list item which includes the category name and item count."
     },
     {
       "action": "done",
-      "description": "Task completed: Extracted all categories and their corresponding item counts.",
-      "text": "Extracted all categories with the corresponding number of items in brackets."
+      "description": "Task completed: Extracted all categories and their corresponding item counts."
     }
   ]
 }

@@ -17,7 +17,7 @@ const AgentInteractionPage = () => {
     
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/get_json?url=${websiteUrl}&prompt=None`
+        `http://127.0.0.1:8000/get_json?url=${websiteUrl}`
       );
       if (!response.ok) {
         throw new Error(`API error: ${response.status}`);

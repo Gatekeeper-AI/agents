@@ -7,6 +7,7 @@ from pprint import pprint
 from urllib.parse import urlparse, parse_qs
 
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_groq import ChatGroq
 from pydantic import BaseModel
 from dotenv import load_dotenv
 
@@ -202,9 +203,9 @@ async def process_outer_flows(llm, flows_config: dict, model_actions, model_thou
 async def run_agent_and_process_history(base_url: str = "https://x.com", prompt: str = "Login to my twitter and click a post with my username: attack199850815 and password: Jack1234"):
     target_domain = get_domain(base_url)
     
-    
+    llm = ChatGroq(model="deepseek-r1-distill-qwen-32b", api_key=os.getenv("GROQ_API_KEY"))
     # Create an LLM instance.
-    llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-exp', api_key=os.getenv("GOOGLE_GENERATIVE_API_KEY"))
+    # llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-exp', api_key=os.getenv("GOOGLE_GENERATIVE_API_KEY"))
     
     # Create a Browser instance with your desired configuration.
     browser = Browser(config=BrowserConfig(headless=False, disable_security=True))
@@ -217,6 +218,7 @@ async def run_agent_and_process_history(base_url: str = "https://x.com", prompt:
     
     
     # Initialize the Agent with a task (e.g., a login task).
+    logger.info(f"Setting up agent prompt:{prompt} using LLM {llm.model_name}")
     agent = Agent(
         task=prompt,
         llm=llm,
