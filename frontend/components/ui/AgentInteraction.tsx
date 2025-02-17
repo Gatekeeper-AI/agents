@@ -74,8 +74,6 @@ const AgentInteraction: React.FC<AgentInteractionProps> = ({ url, agentsJson }) 
     try {
       setStatusMessage("Starting initiate...");
       
-      // Because /initiate is defined as a GET endpoint with these query params,
-      // encode the generatedActions as a string.
       const queryParams = new URLSearchParams({
         prompt: agentQuery,
         url,

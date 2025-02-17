@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 interface UserInfo {
     walletAddress: string | null;
-    messages: null;
+    tokenBalance: number | null; 
 }
 
 interface UserStore {
@@ -14,7 +14,7 @@ interface UserStore {
 export const useUserStore = create<UserStore>((set) => ({
     userInfo: { 
         walletAddress: null, 
-        messages: null 
+        tokenBalance: null, 
     },
     setWalletAddress: (address) => set((state) => ({
         userInfo: { 

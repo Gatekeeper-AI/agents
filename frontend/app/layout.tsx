@@ -1,6 +1,7 @@
 // app/layout.tsx
 "use client";
 
+import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 import { PrivyProvider } from '@privy-io/react-auth';
 import { toSolanaWalletConnectors } from '@privy-io/react-auth/solana';
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         >
           {children}
+          <Toaster />
         </PrivyProvider>
       </body>
     </html>

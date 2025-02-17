@@ -6,6 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Copy, Download, ThumbsUp, ThumbsDown } from 'lucide-react'
 import { cn } from "@/lib/utils"
 import { useEffect } from "react"
+import { toast } from "@/components/ui/use-toast"
 
 interface Message {
   role: "agent" | "user"
@@ -27,6 +28,29 @@ export default function ChatInterface() {
       },
     ])
   }, [])
+
+  const handleCopy = (content: string) => {
+    navigator.clipboard
+      .writeText(content)
+      .then(() => {
+        toast({
+          description: "Text copied to clipboard",
+        })
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err)
+        toast({
+          variant: "destructive",
+          description: "Failed to copy text",
+        })
+      })
+  }
+
+  const handleFeedback = (type: "up" | "down") => {
+    toast({
+      description: `Thanks for your ${type === "up" ? "positive" : "negative"} feedback!`,
+    })
+  }
 
   const handleSubmit = async () => {
     if (!input.trim() || isLoading) return
@@ -110,16 +134,16 @@ export default function ChatInterface() {
                 </div>
                 {message.role === "agent" && (
                   <div className="flex items-center gap-2">
-                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                    <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleCopy(message.content)}>
                       <Copy className="h-4 w-4" />
                     </Button>
                     <Button variant="ghost" size="icon" className="h-8 w-8">
                       <Download className="h-4 w-4" />
                     </Button>
-                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                    <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleFeedback("up")}>
                       <ThumbsUp className="h-4 w-4" />
                     </Button>
-                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                    <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleFeedback("down")}>
                       <ThumbsDown className="h-4 w-4" />
                     </Button>
                   </div>
@@ -132,7 +156,7 @@ export default function ChatInterface() {
 
       <div className="p-4 border-t">
         <div className="flex gap-2">
-          <Textarea
+          <Textarea 
             placeholder="Type your task here..."
             value={input}
             onChange={(e) => setInput(e.target.value)}

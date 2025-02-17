@@ -3,16 +3,22 @@
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Brain, Settings, EqualApproximately, Menu, ChevronLeft, Activity } from 'lucide-react';
-import { useState } from "react";
-import { usePrivy } from "@privy-io/react-auth";
+import { useEffect, useState } from "react";
+import { usePrivy, useSolanaWallets } from "@privy-io/react-auth";
+import { useUserStore } from '@/store/useAuthStore';
 
 interface SidebarProps {
   setActivePage: (page: string) => void;
 }
 
+
+
 export function Sidebar({ setActivePage }: SidebarProps) {
   const { ready, authenticated, user } = usePrivy();
+  const { wallets } = useSolanaWallets();
   const [isOpen, setIsOpen] = useState(true);
+  const { userInfo } = useUserStore();
+
 
   return (
     <>
@@ -29,7 +35,7 @@ export function Sidebar({ setActivePage }: SidebarProps) {
           {isOpen && (
             <div className="flex items-center gap-2">
               <div className="h-6 w-6 rounded-full bg-primary" />
-              <span className="font-semibold">GenerativeAgent</span>
+              <span className="font-semibold">Mechanize Labs</span>
             </div>
           )}
           <Button variant="ghost" size="icon" className="hidden md:flex" onClick={() => setIsOpen(!isOpen)}>
@@ -43,8 +49,9 @@ export function Sidebar({ setActivePage }: SidebarProps) {
               <Button variant="ghost" className="w-full justify-start" onClick={() => setActivePage("about")}>
                 <EqualApproximately className="mr-2 h-4 w-4" /> {isOpen && "Manifesto"}
               </Button>
-              {ready && authenticated && user ? (
+              {ready && authenticated && user && (
                 <>
+                
                   <Button variant="ghost" className="w-full justify-start" onClick={() => setActivePage("tasks")}>
                     <Brain className="mr-2 h-4 w-4" /> {isOpen && "Tasks"}
                   </Button>
@@ -54,9 +61,13 @@ export function Sidebar({ setActivePage }: SidebarProps) {
                   <Button variant="ghost" className="w-full justify-start" onClick={() => setActivePage("agentgenerator")}> 
                     <Activity className="mr-2 h-4 w-4" /> {isOpen && "Agent"} 
                   </Button>
+                  {(userInfo.tokenBalance !== null && userInfo.tokenBalance < 0) && (
+                    <Button variant="ghost" className="w-full justify-start" onClick={() => setActivePage("exclusive")}>
+                      🔑 {isOpen && "Exclusive Access"}
+                    </Button>
+                  )}
+                  
                 </>
-              ) : (
-                <div></div>
               )}
             </nav>
           </div>
