@@ -11,7 +11,6 @@ backports.tarfile==1.2.0
 beautifulsoup4==4.13.3
 boto3==1.36.16
 botocore==1.36.16
--e git+https://github.com/Gatekeeper-AI/agents.git@be184953b48e6cf78b3301f959b7266067a41077#egg=browser_use&subdirectory=backend/app/browser_user
 build==1.2.2.post1
 cachetools==5.5.1
 certifi==2025.1.31
