@@ -51,16 +51,8 @@ async def query_agent(
     
     # Run agent and get history
     history_data = await run_agent_and_return_history(prompt, url, max_steps)
-
-    if not isinstance(history_data, dict):
-        history_data = history_data.__dict__  # Convert to dictionary if it's an object
-    # Find the final result
-    final_result = None
-    for result in history_data.get("all_results", []):
-        print(result)
-        if result.get("is_done", False):  # Check if this is the final result
-            final_result = result.get("extracted_content", None)
-            break
+    final_result = next((result.extracted_content for result in history_data if result.is_done), None)
+    logger.info(f"Final Result", final_result)
 
     if final_result:
         return JSONResponse(content={"result": final_result}, status_code=200)

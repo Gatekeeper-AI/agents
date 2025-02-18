@@ -75,7 +75,9 @@ export function Header() {
     <header className="h-14 border-b px-4 flex items-center justify-between">
       <h1 className="text-sm font-medium">FreeAgent</h1>
       <div className="flex items-center gap-2">
-        {tokenBalance !== null && `${tokenBalance}`}
+        <div className='pr-9'>
+        {tokenBalance !== null && `$${tokenBalance} Tokens`}
+        </div>
         {ready && authenticated && user ? (
           <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
             <DropdownMenuTrigger asChild>

@@ -6,6 +6,7 @@ import { Brain, Settings, EqualApproximately, Menu, ChevronLeft, Activity } from
 import { useEffect, useState } from "react";
 import { usePrivy, useSolanaWallets } from "@privy-io/react-auth";
 import { useUserStore } from '@/store/useAuthStore';
+import Image from "next/image";
 
 interface SidebarProps {
   setActivePage: (page: string) => void;
@@ -34,9 +35,13 @@ export function Sidebar({ setActivePage }: SidebarProps) {
         <div className="flex items-center justify-between p-4 border-b">
           {isOpen && (
             <div className="flex items-center gap-2">
-              <div className="h-6 w-6 rounded-full bg-primary" />
-              <span className="font-semibold">Mechanize Labs</span>
+            {/* Logo with Green Overlay */}
+            <div className="relative w-8 h-8">
+              <Image src="/logo.png" alt="Logo" width={128} height={128} className="rounded-full" />
+              <div className="absolute inset-0 bg-green-500 opacity-20 rounded-full" />
             </div>
+            <span className="font-semibold">Mechanize Labs</span>
+          </div>
           )}
           <Button variant="ghost" size="icon" className="hidden md:flex" onClick={() => setIsOpen(!isOpen)}>
             <ChevronLeft className={`w-5 h-5 transform transition-transform ${isOpen ? "rotate-0" : "rotate-180"}`} />

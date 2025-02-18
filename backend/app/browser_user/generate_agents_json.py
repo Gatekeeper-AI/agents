@@ -270,8 +270,8 @@ async def run_agent_and_return_history(prompt: str, base_url: str = None, max_st
     # Instantiate a BrowserContext.
     browser_context = BrowserContext(browser, config=context_config)
     
-    llm = ChatGroq(model="deepseek-r1-distill-qwen-32b", api_key=os.getenv("GROQ_API_KEY"))
-    # llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-exp', api_key=os.getenv("GOOGLE_GENERATIVE_API_KEY"))
+    # llm = ChatGroq(model="deepseek-r1-distill-qwen-32b", api_key=os.getenv("GROQ_API_KEY"))
+    llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-exp', api_key=os.getenv("GOOGLE_GENERATIVE_API_KEY"))
     # Initialize the Agent with a task (e.g., a login task).
     logger.info(f"Setting up agent prompt: {prompt}")
     agent = Agent(
@@ -284,7 +284,7 @@ async def run_agent_and_return_history(prompt: str, base_url: str = None, max_st
     history: AgentHistoryList = await agent.run(max_steps=max_steps)
     logger.info(f"Agent discovery completed in {agent.n_steps} steps.")
     logger.info(f'History: {history}')
-    return history
+    return history.action_results()
 
 def generate_agents_json(base_url: str, prompt: str):
     asyncio.run(run_agent_and_process_history(base_url=base_url, prompt=prompt))
