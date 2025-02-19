@@ -51,8 +51,11 @@ async def query_agent(
     
     # Run agent and get history
     history_data = await run_agent_and_return_history(prompt, url, max_steps)
-    final_result = next((result.extracted_content for result in history_data if result.is_done), None)
-    logger.info(f"Final Result", final_result)
+    try:
+        final_result = next((result.extracted_content for result in history_data if result.is_done), None)
+        logger.info(f"Final Result", final_result)
+    except Exception as e:
+        return JSONResponse(content={"result": e}, status_code=404)
 
     if final_result:
         return JSONResponse(content={"result": final_result}, status_code=200)
@@ -260,5 +263,5 @@ async def generate_actions_inner(request: UserPrompt):
 
 if __name__ == "__main__":
     logger.info('starting')
-    port = int(os.environ.get("PORT", 8000))
+    port = int(os.environ.get("PORT",8000))
     uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)

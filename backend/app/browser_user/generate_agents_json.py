@@ -8,6 +8,7 @@ from urllib.parse import urlparse, parse_qs
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_groq import ChatGroq
+from langchain_openai import ChatOpenAI
 from pydantic import BaseModel
 from dotenv import load_dotenv
 
@@ -262,18 +263,18 @@ async def run_agent_and_return_history(prompt: str, base_url: str = None, max_st
         target_domain = get_domain(base_url)
 
 # Create a BrowserContextConfig with the start_url.    
-    context_config = BrowserContextConfig(start_url=base_url)
+    context_config = BrowserContextConfig()
 
     # Create a Browser instance with your desired configuration.
     browser = Browser(config=BrowserConfig(headless=False, disable_security=True))
     
     # Instantiate a BrowserContext.
     browser_context = BrowserContext(browser, config=context_config)
-    # llm=ChatOpenAI( base_url='https://api.groq.com/openai/v1', model='llama-3.3-70b-versatile', api_key=SecretStr(api_key), ),
+    # llm=ChatOpenAI( base_url='https://api.groq.com/openai/v1', model='llama-3.3-70b-versatile', api_key=os.getenv("GROQ_API_KEY"), ),
 
 
-    llm = ChatGroq(model="deepseek-r1-distill-qwen-32b", api_key=os.getenv("GROQ_API_KEY"))
-    # llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-exp', api_key=os.getenv("GOOGLE_GENERATIVE_API_KEY"))
+    # llm = ChatGroq(model="deepseek-r1-distill-qwen-32b", api_key=os.getenv("GROQ_API_KEY"))
+    llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash-exp', api_key=os.getenv("GOOGLE_GENERATIVE_API_KEY"))
     # Initialize the Agent with a task (e.g., a login task).
     logger.info(f"Setting up agent prompt: {prompt}")
     agent = Agent(
