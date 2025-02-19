@@ -10,13 +10,13 @@ RUN pip install --upgrade pip uv
 COPY requirements.txt /app/
 COPY . /app/
 
-# Create and activate virtual environment
-RUN python -m venv .venv
+# Create and activate virtual environment using uv
+RUN uv venv .venv
 ENV PATH="/app/.venv/bin:$PATH"
 
-# Install dependencies inside the virtual environment
-RUN pip install -r requirements.txt
-RUN pip install uvicorn[standard] playwright
+# Install dependencies inside the virtual environment using uv
+RUN uv pip install -r requirements.txt
+RUN uv pip install uvicorn[standard] playwright browser-use
 
 # Install Playwright dependencies
 RUN playwright install --with-deps
