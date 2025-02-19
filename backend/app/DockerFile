@@ -19,8 +19,11 @@ RUN uv venv --python 3.11 && \
 RUN . .venv/bin/activate && \
     playwright install --with-deps
 
-RUN uv pip install uvicorn["standard"]
+RUN . .venv/bin/activate && \
+uv pip install fastapi uvicorn[standard]
 
+
+RUN uv pip install uvicorn["standard"]
 
 EXPOSE 8000
 
