@@ -3,11 +3,10 @@ FROM python:3.11
 # Set the working directory
 WORKDIR /app
 
+COPY . .
+
 # Install uv
 RUN pip install uv
-
-# Copy the requirements file
-COPY requirements.txt /app/requirements.txt
 
 # Create virtual environment using uv
 RUN uv venv --python 3.11 && \
@@ -22,10 +21,6 @@ RUN . .venv/bin/activate && \
 RUN . .venv/bin/activate && \
 uv pip install fastapi uvicorn[standard]
 
-
-RUN uv pip install uvicorn["standard"]
-
 EXPOSE 8000
 
-# Start FastAPI in development mode
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["fastapi", "run", "main.py", "--proxy-headers", "--port", "8080"]
