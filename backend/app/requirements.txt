@@ -1,3 +1,4 @@
+hypercorn
 aiohappyeyeballs
 aiohttp
 aiosignal
