@@ -3,24 +3,26 @@ FROM python:3.11
 # Set the working directory
 WORKDIR /app
 
-COPY . .
+# Install system dependencies
+RUN pip install --upgrade pip uv
 
-# Install uv
-RUN pip install uv
+# Copy the requirements file and the application code
+COPY requirements.txt /app/
+COPY . /app/
 
-# Create virtual environment using uv
-RUN uv venv --python 3.11 && \
-    . .venv/bin/activate && \
-    uv pip install -r requirements.txt && \
-    uv pip install browser-use
+# Create and activate virtual environment
+RUN python -m venv .venv
+ENV PATH="/app/.venv/bin:$PATH"
 
-# Install Playwright and its dependencies
-RUN . .venv/bin/activate && \
-    playwright install --with-deps
+# Install dependencies inside the virtual environment
+RUN pip install -r requirements.txt
+RUN pip install uvicorn[standard] playwright
 
-RUN . .venv/bin/activate && \
-uv pip install fastapi uvicorn[standard]
+# Install Playwright dependencies
+RUN playwright install --with-deps
 
+# Expose FastAPI's default port
 EXPOSE 8000
 
-CMD [".venv/bin/uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# Run FastAPI using Uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
