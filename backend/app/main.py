@@ -54,8 +54,8 @@ async def query_agent(
     try:
         final_result = next((result.extracted_content for result in history_data if result.is_done), None)
         logger.info(f"Final Result", final_result)
-    except Exception as e:
-        return JSONResponse(content={"result": e}, status_code=404)
+    except:
+        return JSONResponse(content={"result": "No result found"}, status_code=404)
 
     if final_result:
         return JSONResponse(content={"result": final_result}, status_code=200)
