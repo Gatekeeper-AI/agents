@@ -16,7 +16,7 @@ from loguru import logger
 from browser_user.generate_agents_json import run_agent_and_process_history, run_agent_and_return_history
 import uvicorn
 import requests
-from db import mongodb
+# from db import mongodb
 import seleniumScript
 import time
 import json
@@ -259,4 +259,6 @@ async def generate_actions_inner(request: UserPrompt):
     return actions_response
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port="8000", reload=True)
+    logger.info('starting')
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
